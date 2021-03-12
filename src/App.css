@@ -1,4 +1,6 @@
 .App {
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -34,4 +36,11 @@ button.lit {
 button.number {
   background: rgb(0, 0, 0);
   color: #fff;
+}
+
+.space-container {
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 350px;
 }
