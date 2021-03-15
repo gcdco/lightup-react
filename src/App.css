@@ -2,6 +2,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0px;
 }
 
 .App-header {
@@ -22,25 +23,42 @@ button {
   color: #000;
   border: 1px solid black;
   text-align: center;
-  padding: 10px;
+  font-size: 16px;
+  padding: 0px;
+  /*margin: 0px; */
 }
 
 button:hover {
   background: rgb(250, 247, 103);
 }
 
+button.black {
+  background: rgb(0, 0, 0);
+}
+
 button.lit {
   background: rgb(250, 247, 103);
+}
+
+button.light {
+  background: rgb(250, 186, 103);
+  background-image: url("./img/lightbulb50.png");
+
 }
 
 button.number {
   background: rgb(0, 0, 0);
   color: #fff;
+  padding: 0px;
+
 }
 
 .space-container {
   justify-content: center;
+  text-align: center;
   align-items: center;
   width: 350px;
   height: 350px;
+  margin: 0 auto;
+  padding: 0px;
 }

@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import './App.css';
-//import Space from './components/Space';
 import Board from './components/Board';
+
+import './App.css';
 
 function App() {
   const [spaces, setSpaces] = useState([
     {
       id: 1,
       light: false,
-      lit: true,
+      lit: false,
       number: false,
+      black: true,
       value: null,
     },
     {
       id: 2,
       light: false,
       lit: false,
-      number: true,
+      number: false,
+      black: false,
       value: null,
     },
     {
@@ -31,6 +33,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -38,6 +41,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -45,20 +49,23 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: true,
       value: null,
     },
     {
       id: 7,
       light: true,
       lit: false,
-      number: false,
-      value: null,
+      number: true,
+      black: false,
+      value: 0,
     },
     {
       id: 8,
       light: false,
       lit: false,
       number: false,
+      black: true,
       value: null,
     },
     {
@@ -66,6 +73,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -73,6 +81,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -80,6 +89,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -87,6 +97,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -94,6 +105,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -101,6 +113,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -108,6 +121,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -115,6 +129,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -122,6 +137,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -129,6 +145,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -136,6 +153,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -143,13 +161,15 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
       id: 21,
       light: false,
       lit: false,
-      number: true,
+      number: false,
+      black: false,
       value: 5,
     },
     {
@@ -157,6 +177,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -164,6 +185,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -171,20 +193,23 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
       id: 25,
       light: false,
       lit: false,
-      number: false,
-      value: null,
+      number: true,
+      black: false,
+      value: 4,
     },
     {
       id: 26,
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -192,6 +217,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -199,6 +225,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -206,6 +233,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -213,6 +241,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -220,6 +249,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -227,6 +257,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -234,6 +265,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -241,6 +273,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -248,6 +281,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -255,6 +289,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -262,6 +297,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -269,6 +305,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -276,6 +313,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -283,6 +321,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -290,20 +329,23 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
       id: 42,
       light: false,
       lit: false,
-      number: false,
-      value: null,
+      number: true,
+      black: false,
+      value: 1,
     },
     {
       id: 43,
       light: false,
       lit: false,
       number: false,
+      black: true,
       value: null,
     },
     {
@@ -311,6 +353,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: true,
       value: null,
     },
     {
@@ -318,6 +361,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -325,6 +369,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -332,6 +377,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -339,6 +385,7 @@ function App() {
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -346,6 +393,7 @@ function App() {
       light: true,
       lit: false,
       number: false,
+      black: true,
       value: null,
     }
   ]);
@@ -353,8 +401,11 @@ function App() {
   // Not switching on
   const switchSpace = (id) => {
     const square = spaces.find(x => x.id === id)
-    square.lit = !square.lit
-    square.light = !square.light
+    if(!square.black && !square.number){
+      //square.lit = !square.lit
+      square.light = !square.light
+    }
+
     //setSpaces(spaces.map((space) => (space.id === id) ? {...space, light: square.light} : space ))
     setSpaces(spaces.map((space) => (space.id === id) ? {...space, square} : space ))
     // switchAdjacentSpaces(square.id)
@@ -371,7 +422,7 @@ function App() {
   
   return (
     <div className="App">
-      <h1>hello</h1> 
+      <h1>LIGHTUP</h1> 
       <Board onSwitch={switchSpace} spaces={spaces} />
     </div>
   );
