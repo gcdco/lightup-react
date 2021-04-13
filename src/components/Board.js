@@ -1,27 +1,19 @@
+import React, { Component } from 'react';
 import Space from './Space'
 
-const Board = ({ onSwitch, spaces}) => {
-    // function renderspace (space, id) {
-    //     <Space 
-    //         key={id}
-    //         space={space}
-    //         onSwitch={onSwitch} 
-    //     />
-    // }
-
-
-    return (         
-        <div className ='space-container'>
-            {spaces.map((space) => (
-                <Space 
-                    key={space.id}
-                    space={space}
-                    onSwitch={onSwitch} 
-                />
-            ))}
-        </div>
-    )
+class Board extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  }
+    }
+    render() { 
+        return (         
+            <div className ='Board'>
+                <h1>Board</h1>
+                <Space />
+            </div>
+        )
+    }
 }
-
-
+ 
 export default Board;

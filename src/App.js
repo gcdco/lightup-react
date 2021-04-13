@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
-
 import './App.css';
+
+// <i class="far fa-lightbulb"></i>
 
 function App() {
   const [spaces, setSpaces] = useState([
@@ -397,33 +398,11 @@ function App() {
       value: null,
     }
   ]);
-
-  // Not switching on
-  const switchSpace = (id) => {
-    const square = spaces.find(x => x.id === id)
-    if(!square.black && !square.number){
-      //square.lit = !square.lit
-      square.light = !square.light
-    }
-
-    //setSpaces(spaces.map((space) => (space.id === id) ? {...space, light: square.light} : space ))
-    setSpaces(spaces.map((space) => (space.id === id) ? {...space, square} : space ))
-    // switchAdjacentSpaces(square.id)
-  }
-
-  // Update spaces adjacent to the switched on/off space after a call to switchSpace()
-  const switchAdjacentSpaces = (id) => {
-    let updSpaces = []
-    // vertical spaces top
-    for (let i = id; i < 7; i++){
-      
-    }
-  }
   
   return (
     <div className="App">
       <h1>LIGHTUP</h1> 
-      <Board onSwitch={switchSpace} spaces={spaces} />
+        <Board />
     </div>
   );
 }
