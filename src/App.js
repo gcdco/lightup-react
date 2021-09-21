@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+const axios = require('axios').default;
 import Board from './components/Board';
 import './App.css';
-
+// npx json-server --watch db.json
 // <i class="far fa-lightbulb"></i>
 
 function App() {
@@ -398,11 +399,11 @@ function App() {
       value: null,
     }
   ]);
-  
+
   return (
     <div className="App">
-      <h1>LIGHTUP</h1> 
-        <Board />
+      <h1>LIGHTUP</h1>
+      <Board />
     </div>
   );
 }
