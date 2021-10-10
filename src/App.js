@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Board from './components/Board';
+import board1 from './gameBoards';
+
 //import './App.css';
 
 const url = "http://localhost:4000/gameBoards";
@@ -22,11 +24,11 @@ const makeBoard = (data) => {
 };
 
 function App() {
-  const [boards, setBoard] = useState({ boards: [] });
+  const [boards, setBoard] = useState([]);
 
-  useEffect(async () => {
-    const results = await axios(url);
-    const board = makeBoard(results.data);
+  useEffect(() => {
+    //const results = await axios(url);
+    const board = makeBoard(board1);
     //console.log(board);
     setBoard(board);
   }, []);

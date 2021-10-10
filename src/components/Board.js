@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import WhiteSpace from './WhiteSpace';
-import board1 from './gameBoards';
 
 
 const Board = ({ board }) => {
