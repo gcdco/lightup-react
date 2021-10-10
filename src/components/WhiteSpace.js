@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const WhiteSpace = (props) => {
-    const light = <i class="far fa-lightbulb" style={{ fontSize: "4em", backgroundColor: '#ffff3f' }}></i>;
+    const light = <i className="far fa-lightbulb" style={{ fontSize: "4em", backgroundColor: '#ffff3f' }}></i>;
     return (
 
         <div>
@@ -9,14 +9,6 @@ const WhiteSpace = (props) => {
             {light}
         </div>
     );
-};
-
-WhiteSpace.defaultProps = {
-    light: false,
-    lit: false,
-    number: false,
-    black: false,
-    value: null
 };
 
 export default WhiteSpace;

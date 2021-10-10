@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
-const BlackSpace = (props) => {
-    console.log(props)
+const NumberSpace = (props) => {
     const divStyle = {
         color: 'white',
-        backgroundColor: 'black'
+        backgroundColor: 'green'
     };
 
     return (
         <div style={divStyle}>
-            <h1>BlackSpace</h1>
+            <h1>NumberSpace {props.value}</h1>
+            
         </div>
     );
 };
 
-export default BlackSpace;
+export default NumberSpace;

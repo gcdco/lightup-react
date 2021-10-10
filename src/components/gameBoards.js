@@ -3,9 +3,9 @@ const board1 = [
       id: 1,
       light: false,
       lit: false,
-      number: false,
+      number: true,
       black: true,
-      value: null,
+      value: 25,
     },
     {
       id: 2,
@@ -20,6 +20,7 @@ const board1 = [
       light: false,
       lit: false,
       number: false,
+      black: false,
       value: null,
     },
     {
@@ -331,7 +332,7 @@ const board1 = [
       light: false,
       lit: false,
       number: true,
-      black: false,
+      black: true,
       value: 1,
     },
     {
