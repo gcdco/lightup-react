@@ -1,18 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
+import '../Board.css';
 
-
+const createBoard = (data) => {
+        const board = [];
+        let row = [];
+      
+        data.forEach((s) => {
+          row.push({
+            id: s.id,
+            black: s.black,
+            light: s.light,
+            lit: s.lit,
+            number: s.number,
+            value: s.value
+          });
+          if (row.length === 7) {
+            board.push(row);
+            row = [];
+          }
+        });
+        return board;
+};
 
 const Board = (props) => {
-    let board = props.board;
+    const [board, setBoard] = useState(createBoard(props.board));
+    //let defBoard = createBoard(props.board)
 
+
+    // useEffect(() => {
+    //     let defBoard = createBoard(props.board)
+    //     setBoard(defBoard); 
+    // },[]);
+
+    const allSpaces = [];
     const whiteSpaces = [];
     const blackSpaces = [];
     const lights = [];
 
-    let newBoard = board.map((row) => {
+
+
+    const makeBoard = board.map((row) => {
         return (row.map((space) => {
             if (space.black === true) {
                 return (<BlackSpace 
@@ -38,9 +68,11 @@ const Board = (props) => {
 
 
     return (
-        <div className='Board'>
-            <h1>Board</h1>
-            {newBoard}
+        <div className="Board-Container">
+            <div className='Board'>
+                <h1>Board</h1>
+                {makeBoard}
+            </div>
         </div>
     );
 };

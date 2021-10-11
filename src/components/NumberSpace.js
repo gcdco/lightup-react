@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../Board.css';
 
 const NumberSpace = (props) => {
     const divStyle = {
@@ -7,9 +8,7 @@ const NumberSpace = (props) => {
     };
 
     return (
-        <div style={divStyle}>
-            <h1>NumberSpace {props.value}</h1>
-            
+        <div className = "NumberSpace">
         </div>
     );
 };

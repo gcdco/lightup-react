@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../Board.css';
 
 const BlackSpace = (props) => {
     console.log(props)
@@ -8,8 +9,7 @@ const BlackSpace = (props) => {
     };
 
     return (
-        <div style={divStyle}>
-            <h1>BlackSpace</h1>
+        <div className="BlackSpace">
         </div>
     );
 };

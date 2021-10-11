@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import '../Board.css';
 
 const WhiteSpace = (props) => {
-    const light = <i className="far fa-lightbulb" style={{ fontSize: "4em", backgroundColor: '#ffff3f' }}></i>;
+    // const light = <i className="far fa-lightbulb" style={{ fontSize: "4em", backgroundColor: '#ffff3f' }}></i>;
     return (
-
-        <div>
-            <h1>WhiteSpace</h1>
-            {light}
-        </div>
+            <div className="WhiteSpace">
+            </div>
     );
 };
 

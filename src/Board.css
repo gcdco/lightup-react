@@ -1,0 +1,21 @@
+.Board-Container {
+    width: 49px;
+    height: 49px;
+}
+
+.WhiteSpace, .BlackSpace, .NumberedSpace {
+    width: 7px;
+    height: 7px;
+}
+
+.WhiteSpace{
+    background-color: aquamarine;
+}
+
+.BlackSpace{
+    background-color: black;
+}
+
+.NumberedSpace{
+    background-color: greenyellow;
+}
