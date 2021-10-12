@@ -4,25 +4,28 @@ import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
 import '../Board.css';
 
+const NCOLS = 7;
+const NROWS = 7;
+
 const createBoard = (data) => {
-        const board = [];
-        let row = [];
-      
-        data.forEach((s) => {
-          row.push({
+    const board = [];
+    let row = [];
+
+    data.forEach((s) => {
+        row.push({
             id: s.id,
             black: s.black,
             light: s.light,
             lit: s.lit,
             number: s.number,
             value: s.value
-          });
-          if (row.length === 7) {
+        });
+        if (row.length === 7) {
             board.push(row);
             row = [];
-          }
-        });
-        return board;
+        }
+    });
+    return board;
 };
 
 const Board = (props) => {
@@ -40,38 +43,61 @@ const Board = (props) => {
     const blackSpaces = [];
     const lights = [];
 
+    const handleClick = (cord) => {
+        let msg = cord + "click";
+        alert(msg);
+    };
 
-
-    const makeBoard = board.map((row) => {
-        return (row.map((space) => {
-            if (space.black === true) {
-                return (<BlackSpace 
-                            key={space.id}
+    /** Render game board or winning message. */
+    function makeTable(board) {
+        let tblBoard = [];
+        for (let y = 0; y < NROWS; y++) {
+            let row = [];
+            for (let x = 0; x < NCOLS; x++) {
+                let coord = `${y}-${x}`;
+                if (board[y][x].black === true) {
+                    row.push(<BlackSpace
+                        key={board[y][x].id}
+                        coord={coord}
+                        handleClick={handleClick}
                     />);
-            }
-            else if(space.number === true){
-                return(<NumberSpace
-                    key={space.id}
-                    number={space.number}
-                    value={space.value}
-                />);
-            }
-            else {
-                return (<WhiteSpace
-                        key={space.id} 
-                        light={space.light}
-                        lit={space.lit}
+                }
+                else if (board[y][x].number === true) {
+                    row.push(<NumberSpace
+                        key={board[y][x].id}
+                        coord={coord}
+                        number={board[y][x].number}
+                        value={board[y][x].value}
+                        handleClick={handleClick}
                     />);
+                }
+                else {
+                    row.push(<WhiteSpace
+                        key={board[y][x].id}
+                        coord={coord}
+                        light={board[y][x].light}
+                        lit={board[y][x].lit}
+                        handleClick={handleClick}
+                    />);
+                }
             }
-        }));
-    });
-
+            tblBoard.push(<tr key={y}>{row}</tr>);
+        }
+        return (
+            <table className='Board'>
+                <tbody>{tblBoard}</tbody>
+            </table>
+        );
+    }
 
     return (
-        <div className="Board-Container">
-            <div className='Board'>
-                <h1>Board</h1>
-                {makeBoard}
+        <div>
+            <div>
+                <div className='Board-title'>
+                    <div className='neon-orange'>Light</div>
+                    <div className='neon-blue'>UP</div>
+                </div>
+                {makeTable(board)}
             </div>
         </div>
     );

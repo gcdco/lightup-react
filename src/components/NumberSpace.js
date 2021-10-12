@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import '../Board.css';
+import '../Cell.css';
 
 const NumberSpace = (props) => {
-    const divStyle = {
-        color: 'white',
-        backgroundColor: 'green'
+    const handleClick = () => {
+        props.handleClick(props.coord)
     };
-
     return (
-        <div className = "NumberSpace">
-        </div>
+        <td className="Cell-Number" onClick={handleClick} >{props.value}</td>
     );
 };
 

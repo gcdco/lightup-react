@@ -13,7 +13,6 @@ const axios = require('axios');
 function App() {
   return (
     <div className="App">
-      <h1>LIGHTUP</h1>
       <Board board={board1} />
     </div>
   );

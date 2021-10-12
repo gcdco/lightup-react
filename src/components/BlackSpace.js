@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import '../Board.css';
+import '../Cell.css';
 
 const BlackSpace = (props) => {
-    console.log(props)
-    const divStyle = {
-        color: 'white',
-        backgroundColor: 'black'
+    const handleClick = () => {
+        props.handleClick(props.coord)
     };
 
     return (
-        <div className="BlackSpace">
-        </div>
+        <td className="Cell-Black" onClick={handleClick}/>
     );
 };
 

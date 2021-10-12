@@ -1,0 +1,30 @@
+.Cell-Black {
+  height: 100px;
+  width: 100px;
+  border-radius: 1px;
+  background-color: #0d0d0e;
+  transition: background-color 0.7s ease;
+}
+
+.Cell-Number {
+  height: 100px;
+  width: 100px;
+  border-radius: 1px;
+  color: #fff;
+  font-size: 50px;
+  text-align: center;
+  background-color: #0d0d0e;
+  transition: background-color 0.7s ease;
+}
+
+.Cell-White {
+  height: 100px;
+  width: 100px;
+  border-radius: 1px;
+  background-color: #263238;
+  transition: background-color 0.7s ease;
+}
+
+.Cell-Lit {
+  background-color: #eed705;
+}
