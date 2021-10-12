@@ -43,7 +43,7 @@ const Board = (props) => {
     const blackSpaces = [];
     const lights = [];
 
-    const handleClick = (cord) => {
+    const handleClick = (cord, type) => {
         let msg = cord + "click";
         alert(msg);
     };
