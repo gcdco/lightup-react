@@ -43,9 +43,49 @@ const Board = (props) => {
     const blackSpaces = [];
     const lights = [];
 
-    const handleClick = (cord, type) => {
-        let msg = cord + "click";
-        alert(msg);
+    const flipWhiteCellToLight = (y,x) => {
+        console.log(board);
+        let newBoard = [...board];
+        newBoard[y][x].light = !newBoard[y][x].light;
+        setBoard(newBoard);
+    };
+
+    const flipCellsInWhiteSpaceRowColumn = (y,x) => {
+        let newBoard = [...board];
+        let liteOnOff = false;
+        if(newBoard[y][x].light === true){
+            liteOnOff = true;
+        }
+        //newBoard[y][x].light = !newBoard[y][x].light;
+        for(let xcoord = x; xcoord < NCOLS; xcoord++){
+            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+                break;
+            newBoard[y][xcoord].lit = liteOnOff;
+        }
+        for(let xcoord = x; xcoord >= 0; xcoord--){
+            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+                break;
+            newBoard[y][xcoord].lit = liteOnOff;
+        }
+        for(let ycoord = y; ycoord < NCOLS; ycoord++){
+            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+                break;
+            newBoard[ycoord][x].lit = liteOnOff;
+        }
+        for(let ycoord = y; ycoord >= 0; ycoord--){
+            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+                break;
+            newBoard[ycoord][x].lit = liteOnOff;
+        }
+        setBoard(newBoard);
+    };
+
+    const handleClick = (coord) => {
+        // Flip white space on or off
+        let [y,x] = coord.split("-");
+        flipWhiteCellToLight(y,x);
+        // Light cells in rows and columns
+        flipCellsInWhiteSpaceRowColumn(y,x);
     };
 
     /** Render game board or winning message. */
@@ -59,7 +99,6 @@ const Board = (props) => {
                     row.push(<BlackSpace
                         key={board[y][x].id}
                         coord={coord}
-                        handleClick={handleClick}
                     />);
                 }
                 else if (board[y][x].number === true) {
@@ -68,7 +107,6 @@ const Board = (props) => {
                         coord={coord}
                         number={board[y][x].number}
                         value={board[y][x].value}
-                        handleClick={handleClick}
                     />);
                 }
                 else {

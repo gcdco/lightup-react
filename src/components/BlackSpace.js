@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import '../Cell.css';
 
 const BlackSpace = (props) => {
-    const handleClick = () => {
-        props.handleClick(props.coord)
-    };
-
     return (
-        <td className="Cell-Black" onClick={handleClick}/>
+        <td className="Cell-Black" />
     );
 };
 
