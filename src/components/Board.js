@@ -1,4 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
+import {Solution} from '../Classes/Solution.js';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
@@ -7,26 +8,26 @@ import '../Board.css';
 const NCOLS = 7;
 const NROWS = 7;
 
-const createBoard = (data) => {
-    const board = [];
-    let row = [];
+// const createBoard = (data) => {
+//     const board = [];
+//     let row = [];
 
-    data.forEach((s) => {
-        row.push({
-            id: s.id,
-            black: s.black,
-            light: s.light,
-            lit: s.lit,
-            number: s.number,
-            value: s.value
-        });
-        if (row.length === 7) {
-            board.push(row);
-            row = [];
-        }
-    });
-    return board;
-};
+//     data.forEach((s) => {
+//         row.push({
+//             id: s.id,
+//             black: s.black,
+//             light: s.light,
+//             lit: s.lit,
+//             number: s.number,
+//             value: s.value
+//         });
+//         if (row.length === 7) {
+//             board.push(row);
+//             row = [];
+//         }
+//     });
+//     return board;
+// };
 
 const Board = (props) => {
     const [board, setBoard] = useState(createBoard(props.board));
@@ -38,47 +39,46 @@ const Board = (props) => {
     //     setBoard(defBoard); 
     // },[]);
 
-    const allSpaces = [];
-    const whiteSpaces = [];
-    const blackSpaces = [];
-    const lights = [];
+    // const whiteSpaces = [];
+    // const numberSpaces = [];
+    // const lightSpaces = [];
 
-    const flipWhiteCellToLight = (y,x) => {
-        console.log(board);
-        let newBoard = [...board];
-        newBoard[y][x].light = !newBoard[y][x].light;
-        setBoard(newBoard);
-    };
+    // const flipWhiteCellToLight = (y,x) => {
+    //     console.log(board);
+    //     let newBoard = [...board];
+    //     newBoard[y][x].light = !newBoard[y][x].light;
+    //     setBoard(newBoard);
+    // };
 
-    const flipCellsInWhiteSpaceRowColumn = (y,x) => {
-        let newBoard = [...board];
-        let liteOnOff = false;
-        if(newBoard[y][x].light === true){
-            liteOnOff = true;
-        }
-        //newBoard[y][x].light = !newBoard[y][x].light;
-        for(let xcoord = x; xcoord < NCOLS; xcoord++){
-            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
-                break;
-            newBoard[y][xcoord].lit = liteOnOff;
-        }
-        for(let xcoord = x; xcoord >= 0; xcoord--){
-            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
-                break;
-            newBoard[y][xcoord].lit = liteOnOff;
-        }
-        for(let ycoord = y; ycoord < NCOLS; ycoord++){
-            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
-                break;
-            newBoard[ycoord][x].lit = liteOnOff;
-        }
-        for(let ycoord = y; ycoord >= 0; ycoord--){
-            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
-                break;
-            newBoard[ycoord][x].lit = liteOnOff;
-        }
-        setBoard(newBoard);
-    };
+    // const flipCellsInWhiteSpaceRowColumn = (y,x) => {
+    //     let newBoard = [...board];
+    //     let liteOnOff = false;
+    //     if(newBoard[y][x].light === true){
+    //         liteOnOff = true;
+    //     }
+    //     //newBoard[y][x].light = !newBoard[y][x].light;
+    //     for(let xcoord = x; xcoord < NCOLS; xcoord++){
+    //         if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+    //             break;
+    //         newBoard[y][xcoord].lit = liteOnOff;
+    //     }
+    //     for(let xcoord = x; xcoord >= 0; xcoord--){
+    //         if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+    //             break;
+    //         newBoard[y][xcoord].lit = liteOnOff;
+    //     }
+    //     for(let ycoord = y; ycoord < NCOLS; ycoord++){
+    //         if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+    //             break;
+    //         newBoard[ycoord][x].lit = liteOnOff;
+    //     }
+    //     for(let ycoord = y; ycoord >= 0; ycoord--){
+    //         if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+    //             break;
+    //         newBoard[ycoord][x].lit = liteOnOff;
+    //     }
+    //     setBoard(newBoard);
+    // };
 
     const handleClick = (coord) => {
         // Flip white space on or off
@@ -86,6 +86,9 @@ const Board = (props) => {
         flipWhiteCellToLight(y,x);
         // Light cells in rows and columns
         flipCellsInWhiteSpaceRowColumn(y,x);
+
+        //TODO: call verify(board, whiteSpaces, numberSpaces, lightSpaces);
+        
     };
 
     /** Render game board or winning message. */
