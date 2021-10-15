@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import {Solution} from '../Classes/Solution.js';
+import { Solution } from '../Classes/Solution.js';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
@@ -33,13 +33,13 @@ const Board = (props) => {
     const createBoard = (data) => {
         const board = {
             board: [],
-            whiteSpaces:[],
+            whiteSpaces: [],
             numberSpaces: [],
             lightSpaces: []
         };
-        
+
         let row = [];
-        for(let y = 0; y < data.length; y++){
+        for (let y = 0; y < data.length; y++) {
             let space = {
                 id: data[y].id,
                 coord: `${board.board.length}-${row.length}`,
@@ -51,10 +51,10 @@ const Board = (props) => {
             };
             row.push(space);
 
-            if(data[y].black != true && data[y].number != true){board.whiteSpaces.push(space)}
-            if(data[y].number === true){board.numberSpaces.push(space)}
-            if(row.length === NROWS){
-                board.board.push(row)
+            if (data[y].black != true && data[y].number != true) { board.whiteSpaces.push(space); }
+            if (data[y].number === true) { board.numberSpaces.push(space); }
+            if (row.length === NROWS) {
+                board.board.push(row);
                 row = [];
             }
         }
@@ -67,10 +67,10 @@ const Board = (props) => {
     const [hasWon, setHasWon] = useState(false);
 
     useEffect(() => {
-        for(let space of board.whiteSpaces){
-            space.lit = true;
-        }
-        console.log("hello`")
+        // for(let space of board.whiteSpaces){
+        //     space.lit = true;
+        // }
+        console.log("hello`");
         // for(let space of board.lightSpaces){
         //     const [y,x] = space.coord;
         //     flipCellsInWhiteSpaceRowColumn(y,x);
@@ -82,35 +82,35 @@ const Board = (props) => {
         update the board and rerender before calling setState 
     */
 
-    const flipWhiteCellToLight = (newBoard, y,x) => {
-        let newBoard = {...board.board};
+    const flipWhiteCellToLight = (newBoard, y, x) => {
+        //let newBoard = {...board.board};
         newBoard[y][x].light = !newBoard[y][x].light;
         return newBoard;
     };
 
     const flipCellsInWhiteSpaceRowColumn = (newBoard, y, x) => {
         let liteOnOff = false;
-        if(newBoard[y][x].light === true){
+        if (newBoard[y][x].light === true) {
             liteOnOff = true;
         }
         //newBoard[y][x].light = !newBoard[y][x].light;
-        for(let xcoord = x; xcoord < NCOLS; xcoord++){
-            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+        for (let xcoord = x; xcoord < NCOLS; xcoord++) {
+            if (newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
                 break;
             newBoard[y][xcoord].lit = liteOnOff;
         }
-        for(let xcoord = x; xcoord >= 0; xcoord--){
-            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+        for (let xcoord = x; xcoord >= 0; xcoord--) {
+            if (newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
                 break;
             newBoard[y][xcoord].lit = liteOnOff;
         }
-        for(let ycoord = y; ycoord < NCOLS; ycoord++){
-            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+        for (let ycoord = y; ycoord < NCOLS; ycoord++) {
+            if (newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
                 break;
             newBoard[ycoord][x].lit = liteOnOff;
         }
-        for(let ycoord = y; ycoord >= 0; ycoord--){
-            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+        for (let ycoord = y; ycoord >= 0; ycoord--) {
+            if (newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
                 break;
             newBoard[ycoord][x].lit = liteOnOff;
         }
@@ -119,14 +119,14 @@ const Board = (props) => {
 
     const handleClick = (coord) => {
         // Flip white space on or off
-        let newBoard = {...board.board};
-        let whiteSpaces = {...board.whiteSpaces};
-        let lightSpaces = {...board.lightSpaces};
-        let [y,x] = coord.split("-");
-        newBoard = flipWhiteCellToLight(newBoard, y,x);
+        let newBoard = { ...board.board };
+        let whiteSpaces = { ...board.whiteSpaces };
+        let lightSpaces = { ...board.lightSpaces };
+        let [y, x] = coord.split("-");
+        newBoard = flipWhiteCellToLight(newBoard, y, x);
         //renderLight(); // Update board array after shooting lights
         //TODO: call verify(board, whiteSpaces, numberSpaces, lightSpaces);
-        
+
     };
 
     /*
@@ -139,22 +139,22 @@ const Board = (props) => {
 
     // const renderBoard = () => {
     //     const renderedBored = [];
-        
-        for(let space of board.whiteSpaces){
-            space.lit = false;
-        }
-        for(let space of board.lightSpaces){
-            const [y,x] = space.coord;
-            flipCellsInWhiteSpaceRowColumn(y,x);
-        }
 
-        // for(let y = 0; y < board.length; y++){
-        //     for(let x = 0; x < board.length; x++){
-        //         if(board[y][x].light === true){
-        //             flipCellsInWhiteSpaceRowColumn(y,x);
-        //         }    
-        //     }
-        // }
+    for (let space of board.whiteSpaces) {
+        space.lit = false;
+    }
+    for (let space of board.lightSpaces) {
+        const [y, x] = space.coord;
+        flipCellsInWhiteSpaceRowColumn(y, x);
+    }
+
+    // for(let y = 0; y < board.length; y++){
+    //     for(let x = 0; x < board.length; x++){
+    //         if(board[y][x].light === true){
+    //             flipCellsInWhiteSpaceRowColumn(y,x);
+    //         }    
+    //     }
+    // }
 
     //};
 
@@ -213,7 +213,7 @@ const Board = (props) => {
     return (
         <div>
             <div>
-                { title }
+                {title}
                 {makeTable()}
             </div>
         </div>
