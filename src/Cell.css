@@ -26,5 +26,13 @@
 }
 
 .Cell-Lit {
+  height: 100px;
+  width: 100px;
   background-color: #eed705;
+}
+
+.Cell-Light {
+  height: 100px;
+  width: 100px;
+  background-color: #ee9105;
 }

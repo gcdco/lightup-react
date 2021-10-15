@@ -5,9 +5,10 @@ const WhiteSpace = (props) => {
     const handleClick = () => {
         props.handleClick(props.coord)
     };
-    // const light = <i className="far fa-lightbulb" style={{ fontSize: "4em", backgroundColor: '#ffff3f' }}></i>;
+    let classes = props.lit ? "Cell-Lit" : "Cell-White";
+    classes = props.light ? classes + " Cell-Light" : classes;
     return (
-        <td className="Cell-White" onClick={handleClick} />
+        <td className={classes} onClick={handleClick} />
     );
 };
 
