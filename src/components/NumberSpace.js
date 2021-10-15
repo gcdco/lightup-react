@@ -6,7 +6,7 @@ const NumberSpace = (props) => {
         props.handleClick(props.coord)
     };
     return (
-        <td className="Cell-Number">{props.value}</td>
+        <td className="Cell-Number" onClick={handleClick} >{props.value}</td>
     );
 };
 

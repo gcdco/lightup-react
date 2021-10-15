@@ -102,6 +102,7 @@ const Board = (props) => {
                     row.push(<BlackSpace
                         key={board[y][x].id}
                         coord={coord}
+                        handleClick={handleClick}
                     />);
                 }
                 else if (board[y][x].number === true) {
@@ -110,6 +111,7 @@ const Board = (props) => {
                         coord={coord}
                         number={board[y][x].number}
                         value={board[y][x].value}
+                        handleClick={handleClick}
                     />);
                 }
                 else {

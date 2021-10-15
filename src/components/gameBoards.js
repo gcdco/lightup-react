@@ -49,7 +49,7 @@ const board1 = [
     },
     {
       id: 7,
-      light: false,
+      light: true,
       lit: false,
       number: false,
       black: false,

@@ -24,14 +24,7 @@
   background-color: #263238;
   transition: background-color 0.7s ease;
 }
-.Cell-Light {
-  height: 100px;
-  width: 100px;
-  background-color: crimson;
-}
 
 .Cell-Lit {
-  height: 100px;
-  width: 100px;
   background-color: #eed705;
 }
