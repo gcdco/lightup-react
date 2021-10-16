@@ -67,10 +67,10 @@ const Board = (props) => {
     const [hasWon, setHasWon] = useState(false);
 
     useEffect(() => {
-        for(let space of board.whiteSpaces){
-            space.lit = true;
-        }
-        console.log("hello`")
+        // for(let space of board.whiteSpaces){
+        //     space.lit = true;
+        // }
+        // console.log("hello`")
         // for(let space of board.lightSpaces){
         //     const [y,x] = space.coord;
         //     flipCellsInWhiteSpaceRowColumn(y,x);
@@ -83,89 +83,80 @@ const Board = (props) => {
     */
 
     const flipWhiteCellToLight = (newBoard, y,x) => {
-        let newBoard = {...board.board};
-        newBoard[y][x].light = !newBoard[y][x].light;
+        let id = newBoard.board[y][x].id;
+        if(newBoard.board[y][x].light){
+            newBoard.board[y][x].light = false;
+            newBoard.lightSpaces = newBoard.lightSpaces.filter((s) => s.id != id);
+        }else {
+            newBoard.board[y][x].light = true;
+            newBoard.lightSpaces.push(newBoard.board[y][x]);
+        }
         return newBoard;
     };
 
     const flipCellsInWhiteSpaceRowColumn = (newBoard, y, x) => {
-        let liteOnOff = false;
-        if(newBoard[y][x].light === true){
-            liteOnOff = true;
-        }
-        //newBoard[y][x].light = !newBoard[y][x].light;
+        let liteOnOff = true;
+        //right
         for(let xcoord = x; xcoord < NCOLS; xcoord++){
-            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+            if(newBoard.board[y][xcoord].black === true || newBoard.board[y][xcoord].number === true)
                 break;
-            newBoard[y][xcoord].lit = liteOnOff;
+            if(xcoord === x) continue;
+            newBoard.board[y][xcoord].lit = liteOnOff;
         }
+        //left
         for(let xcoord = x; xcoord >= 0; xcoord--){
-            if(newBoard[y][xcoord].black === true || newBoard[y][xcoord].number === true)
+            if(newBoard.board[y][xcoord].black === true || newBoard.board[y][xcoord].number === true)
                 break;
-            newBoard[y][xcoord].lit = liteOnOff;
+            if(xcoord === x) continue;
+            newBoard.board[y][xcoord].lit = liteOnOff;
         }
+        //down
         for(let ycoord = y; ycoord < NCOLS; ycoord++){
-            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+            if(newBoard.board[ycoord][x].black === true || newBoard.board[ycoord][x].number === true)
                 break;
-            newBoard[ycoord][x].lit = liteOnOff;
+            if(ycoord === y) continue;
+            newBoard.board[ycoord][x].lit = liteOnOff;
         }
+       //up
         for(let ycoord = y; ycoord >= 0; ycoord--){
-            if(newBoard[ycoord][x].black === true || newBoard[ycoord][x].number === true)
+            if(newBoard.board[ycoord][x].black === true || newBoard.board[ycoord][x].number === true) 
                 break;
-            newBoard[ycoord][x].lit = liteOnOff;
+            if(ycoord === y) continue;
+            newBoard.board[ycoord][x].lit = liteOnOff;
         }
         return newBoard;
     };
 
     const handleClick = (coord) => {
         // Flip white space on or off
-        let newBoard = {...board.board};
-        let whiteSpaces = {...board.whiteSpaces};
-        let lightSpaces = {...board.lightSpaces};
+        let newBoard = {...board};
         let [y,x] = coord.split("-");
         newBoard = flipWhiteCellToLight(newBoard, y,x);
-        //renderLight(); // Update board array after shooting lights
+        newBoard = renderLights(newBoard); // Update board array after shooting lights
+        setBoard(newBoard);
         //TODO: call verify(board, whiteSpaces, numberSpaces, lightSpaces);
         
     };
 
-    /*
-    this.setState(st => ({
-      scores: { ...st.scores, [rulename]: ruleFn(this.state.dice) },
-      rollsLeft: NUM_ROLLS,
-      locked: Array(NUM_DICE).fill(false)
-    }));
-    */
-
-    // const renderBoard = () => {
-    //     const renderedBored = [];
-        
+    const renderLights = (board) => {
         for(let space of board.whiteSpaces){
             space.lit = false;
         }
         for(let space of board.lightSpaces){
-            const [y,x] = space.coord;
-            flipCellsInWhiteSpaceRowColumn(y,x);
+            const [y,x] = space.coord.split('-');
+            board = flipCellsInWhiteSpaceRowColumn(board, y, x);
         }
-
-        // for(let y = 0; y < board.length; y++){
-        //     for(let x = 0; x < board.length; x++){
-        //         if(board[y][x].light === true){
-        //             flipCellsInWhiteSpaceRowColumn(y,x);
-        //         }    
-        //     }
-        // }
-
-    //};
+        return board;
+    };
 
     /** Render game board or winning message. */
     function makeTable() {
-        //const []
+        console.log(board)
         let tblBoard = [];
         for (let y = 0; y < NROWS; y++) {
             let row = [];
             for (let x = 0; x < NCOLS; x++) {
-                if (board.board[y][x].black === true) {
+                if (board.board[y][x].black === true && board.board[y][x].number === false) {
                     row.push(<BlackSpace
                         key={board.board[y][x].id}
                         coord={board.board[y][x].coord}

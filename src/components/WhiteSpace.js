@@ -6,7 +6,7 @@ const WhiteSpace = (props) => {
         props.handleClick(props.coord)
     };
     let classes = props.lit ? "Cell-Lit" : "Cell-White";
-    classes = props.light ? classes + " Cell-Light" : classes;
+    classes = props.light ? "Cell-Light" : classes;
     return (
         <td className={classes} onClick={handleClick} />
     );
