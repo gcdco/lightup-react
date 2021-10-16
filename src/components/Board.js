@@ -1,19 +1,14 @@
 /*
-    TODO: Add more boards
     TODO: Work with size
     TODO: Styling
     TODO: Use JSS to make it responsive to and work with mobile phone
 */
 
 import React, { useEffect, useState } from 'react';
-import { Solution } from '../Solution.js';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
 import '../Board.css';
-
-const NCOLS = 7;
-const NROWS = 7;
 
 const Board = (props) => {
     const createBoard = (data) => {
@@ -46,13 +41,12 @@ const Board = (props) => {
         }
         return board;
     };
+
+    const { NCOLS, NROWS } = props;
     const [board, setBoard] = useState(createBoard(props.board));
-    const [hasWon, setHasWon] = useState(false);
 
     useEffect(() => {
-        let solution = new Solution(board);
-        let correct = solution.verify();
-        setHasWon(correct);
+        props.handleVerify(board);
     }, [board]);
 
     const flipWhiteCellToLight = (newBoard, y,x) => {
@@ -160,21 +154,10 @@ const Board = (props) => {
             </table>
         );
     }
-    const title = hasWon ?
-        <div className='Board-title'>
-            <div className='neon-orange'>YOU</div>
-            <div className='neon-blue'>WIN</div>
-        </div>
-        :
-        <div className='Board-title'>
-            <div className='neon-orange'>Light</div>
-            <div className='neon-blue'>UP</div>
-        </div>;
 
     return (
         <div>
             <div>
-                {title}
                 {makeTable()}
             </div>
         </div>

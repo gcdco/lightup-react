@@ -1,16 +1,11 @@
 import React from 'react';
-import Board from './components/Board';
-//import board1 from './components/gameBoards';
-import easyBoard from './components/gameBoardEasy';
-
-//import './App.css';
-
+import LightUp from './components/LightUp';
 // npx json-server --watch -p 4000 db.json
 
 function App() {
   return (
     <div className="App">
-      <Board board={easyBoard} />
+      <LightUp />
     </div>
   );
 }
