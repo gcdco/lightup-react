@@ -1,4 +1,11 @@
-import React, { Component, useEffect, useState } from 'react';
+/*
+    TODO: Add more boards
+    TODO: Work with size
+    TODO: Styling
+    TODO: Use JSS to make it responsive to and work with mobile phone
+*/
+
+import React, { useEffect, useState } from 'react';
 import { Solution } from '../Solution.js';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
@@ -30,7 +37,7 @@ const Board = (props) => {
             };
             row.push(space);
 
-            if (data[y].black != true && data[y].number != true) { board.whiteSpaces.push(space); }
+            if (data[y].black !== true && data[y].number !== true) { board.whiteSpaces.push(space); }
             if (data[y].number === true) { board.numberSpaces.push(space); }
             if (row.length === NROWS) {
                 board.board.push(row);
@@ -48,16 +55,11 @@ const Board = (props) => {
         setHasWon(correct);
     }, [board]);
 
-
-    /*
-        update the board and rerender before calling setState 
-    */
-
     const flipWhiteCellToLight = (newBoard, y,x) => {
         let id = newBoard.board[y][x].id;
         if(newBoard.board[y][x].light){
             newBoard.board[y][x].light = false;
-            newBoard.lightSpaces = newBoard.lightSpaces.filter((s) => s.id != id);
+            newBoard.lightSpaces = newBoard.lightSpaces.filter((s) => s.id !== id);
         }else {
             newBoard.board[y][x].light = true;
             newBoard.lightSpaces.push(newBoard.board[y][x]);
@@ -105,8 +107,6 @@ const Board = (props) => {
         newBoard = flipWhiteCellToLight(newBoard, y,x);
         newBoard = renderLights(newBoard); // Update board array after shooting lights
         setBoard(newBoard);
-        //TODO: call verify(board, whiteSpaces, numberSpaces, lightSpaces);
-
     };
 
     const renderLights = (board) => {
@@ -121,7 +121,7 @@ const Board = (props) => {
     };
 
     /** Render game board or winning message. */
-    function makeTable() {
+    const makeTable = () => {
         let tblBoard = [];
         for (let y = 0; y < NROWS; y++) {
             let row = [];

@@ -5,9 +5,7 @@ import easyBoard from './components/gameBoardEasy';
 
 //import './App.css';
 
-
 // npx json-server --watch -p 4000 db.json
-// <i class="far fa-lightbulb"></i>
 
 function App() {
   return (

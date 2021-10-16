@@ -17,8 +17,6 @@ class Solution {
     }
 
     verifyAllNumberSpacesHaveLights(){
-      console.log(this.numberSpaces)
-      //let hasWon = true;
       for(const space of this.numberSpaces){
         const [y,x] = space.coord.split('-').map(Number);
         let numberOfLights = 0;
