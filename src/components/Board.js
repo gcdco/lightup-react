@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import {Solution} from '../Classes/Solution.js';
+import { Solution } from '../Classes/Solution.js';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
@@ -33,13 +33,13 @@ const Board = (props) => {
     const createBoard = (data) => {
         const board = {
             board: [],
-            whiteSpaces:[],
+            whiteSpaces: [],
             numberSpaces: [],
             lightSpaces: []
         };
-        
+
         let row = [];
-        for(let y = 0; y < data.length; y++){
+        for (let y = 0; y < data.length; y++) {
             let space = {
                 id: data[y].id,
                 coord: `${board.board.length}-${row.length}`,
@@ -51,10 +51,10 @@ const Board = (props) => {
             };
             row.push(space);
 
-            if(data[y].black != true && data[y].number != true){board.whiteSpaces.push(space)}
-            if(data[y].number === true){board.numberSpaces.push(space)}
-            if(row.length === NROWS){
-                board.board.push(row)
+            if (data[y].black != true && data[y].number != true) { board.whiteSpaces.push(space); }
+            if (data[y].number === true) { board.numberSpaces.push(space); }
+            if (row.length === NROWS) {
+                board.board.push(row);
                 row = [];
             }
         }
@@ -135,7 +135,7 @@ const Board = (props) => {
         newBoard = renderLights(newBoard); // Update board array after shooting lights
         setBoard(newBoard);
         //TODO: call verify(board, whiteSpaces, numberSpaces, lightSpaces);
-        
+
     };
 
     const renderLights = (board) => {
@@ -204,7 +204,7 @@ const Board = (props) => {
     return (
         <div>
             <div>
-                { title }
+                {title}
                 {makeTable()}
             </div>
         </div>
