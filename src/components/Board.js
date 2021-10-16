@@ -40,9 +40,6 @@ const Board = (props) => {
         return board;
     };
     const [board, setBoard] = useState(createBoard(props.board));
-    // const [whiteSpaces, setLightSpaces] = useState([]);
-    // const [lightSpaces, setLightSpaces] = useState([]);
-    // const [numberSpaces, setNumberSpaces] = useState([]);
     const [hasWon, setHasWon] = useState(false);
 
     useEffect(() => {
@@ -125,7 +122,6 @@ const Board = (props) => {
 
     /** Render game board or winning message. */
     function makeTable() {
-        console.log(board)
         let tblBoard = [];
         for (let y = 0; y < NROWS; y++) {
             let row = [];

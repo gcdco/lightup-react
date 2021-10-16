@@ -1,27 +1,28 @@
-
 class Solution {
     constructor(board) {
-      this.board = board;
-      this.lightSpaces = this.board.lightSpaces;
-      this.whiteSpaces = this.board.whiteSpaces;
-      this.numberSpaces = this.board.numberSpaces;
+      this.board = board.board;
+      this.lightSpaces = board.lightSpaces;
+      this.whiteSpaces = board.whiteSpaces;
+      this.numberSpaces = board.numberSpaces;
       this.hasWon = true;
     }
 
     verifyAllWhiteSpacesAreLit(){
-      //let allLit = true;
       for(const space of this.whiteSpaces){
-        if(!space.lit) return false;
+        if(!space.lit && !space.light) {
+          return false;
+        }
       }
       return true;
     }
 
     verifyAllNumberSpacesHaveLights(){
+      console.log(this.numberSpaces)
       //let hasWon = true;
       for(const space of this.numberSpaces){
-        let [y,x] = space.coord.split('-').map(Number);
+        const [y,x] = space.coord.split('-').map(Number);
         let numberOfLights = 0;
-        // space above
+        //space above
         if(y-1 >= 0) {
           if(this.board[y-1][x].light !== undefined && this.board[y-1][x].light === true){
             numberOfLights++;
@@ -46,7 +47,7 @@ class Solution {
           } 
         }
         if(numberOfLights < space.value) return false;
-      }
+       }
       return true;
     }
 
@@ -58,15 +59,10 @@ class Solution {
     }
 
     verify(){
-      console.log('verify')
-      //Verify all white spaces are lit
-      this.hasWon = this.verifyAllWhiteSpacesAreLit()
-      //Verify all number spaces have the correct number of lights next to them
-      //this.hasWon = this.verifyAllNumberSpacesHaveLights()
-      console.log(this.numberSpaces)
-      //Verify all lights are not lit
-      this.hasWon = this.verifyAllLightSpacesAreNotLit()
-      return this.hasWon;
+      const whiteSpacesLit = this.verifyAllWhiteSpacesAreLit();
+      const numberSpacesHaveLights = this.verifyAllNumberSpacesHaveLights();
+      const lightSpacesAreNotLit = this.verifyAllLightSpacesAreNotLit();
+      return whiteSpacesLit && numberSpacesHaveLights && lightSpacesAreNotLit;
     }
   }
 

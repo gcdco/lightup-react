@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Board from './components/Board';
-import board1 from './components/gameBoards';
+//import board1 from './components/gameBoards';
 import easyBoard from './components/gameBoardEasy';
 
 //import './App.css';
