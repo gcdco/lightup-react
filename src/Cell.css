@@ -44,7 +44,7 @@
 }
 
 /* Glow effect for lightbulb */
-/* .Cell-Light-Error {
+.cell-Light div {
   position: absolute;
   top: calc(50% - 20px);
   left: calc(50% - 20px);
@@ -56,4 +56,4 @@
     0 0 5px 5px #fff,
     0 0 10px 10px yellow,
     0 0 15px 15px crimson;
-} */
+}

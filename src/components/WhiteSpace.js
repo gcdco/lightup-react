@@ -10,7 +10,16 @@ const WhiteSpace = (props) => {
     classes = (props.light && props.lit) ? "Cell-Light-Error" : classes;
 
     return (
-        <td className={classes} onClick={handleClick}></td>
+        <td className={classes} onClick={handleClick}>
+            {
+                    props.light 
+                ?
+                    <div className={classes}></div>
+                :
+                    ''
+            }
+
+        </td>
     );
 };
 
