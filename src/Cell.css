@@ -36,3 +36,24 @@
   width: 100px;
   background-color: #ee9105;
 }
+
+.Cell-Light-Error {
+  height: 100px;
+  width: 100px;
+  background-color: #ee0505;
+}
+
+/* Glow effect for lightbulb */
+/* .Cell-Light-Error {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow:
+    0 0 5px 5px #fff,
+    0 0 10px 10px yellow,
+    0 0 15px 15px crimson;
+} */

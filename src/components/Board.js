@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { Solution } from '../Classes/Solution.js';
+import { Solution } from '../Solution.js';
 import WhiteSpace from './WhiteSpace';
 import BlackSpace from './BlackSpace';
 import NumberSpace from './NumberSpace';
@@ -7,27 +7,6 @@ import '../Board.css';
 
 const NCOLS = 7;
 const NROWS = 7;
-
-// const createBoard = (data) => {
-//     const board = [];
-//     let row = [];
-
-//     data.forEach((s) => {
-//         row.push({
-//             id: s.id,
-//             black: s.black,
-//             light: s.light,
-//             lit: s.lit,
-//             number: s.number,
-//             value: s.value
-//         });
-//         if (row.length === 7) {
-//             board.push(row);
-//             row = [];
-//         }
-//     });
-//     return board;
-// };
 
 const Board = (props) => {
     const createBoard = (data) => {
@@ -67,14 +46,9 @@ const Board = (props) => {
     const [hasWon, setHasWon] = useState(false);
 
     useEffect(() => {
-        // for(let space of board.whiteSpaces){
-        //     space.lit = true;
-        // }
-        // console.log("hello`")
-        // for(let space of board.lightSpaces){
-        //     const [y,x] = space.coord;
-        //     flipCellsInWhiteSpaceRowColumn(y,x);
-        // }
+        let solution = new Solution(board);
+        let correct = solution.verify();
+        setHasWon(correct);
     }, [board]);
 
 

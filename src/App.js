@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Board from './components/Board';
 import board1 from './components/gameBoards';
+import easyBoard from './components/gameBoardEasy';
 
 //import './App.css';
 
@@ -11,7 +12,7 @@ import board1 from './components/gameBoards';
 function App() {
   return (
     <div className="App">
-      <Board board={board1} />
+      <Board board={easyBoard} />
     </div>
   );
 }
