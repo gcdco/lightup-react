@@ -1,59 +1,56 @@
 .Cell-Black {
-  height: 100px;
-  width: 100px;
-  border-radius: 1px;
-  background-color: #0d0d0e;
-  transition: background-color 0.7s ease;
+    height: 75px;
+    width: 75px;
+    border-radius: 1px;
+    background-color: #0d0d0e;
+    transition: background-color 0.7s ease;
 }
 
 .Cell-Number {
-  height: 100px;
-  width: 100px;
-  border-radius: 1px;
-  color: #fff;
-  font-size: 50px;
-  text-align: center;
-  background-color: #0d0d0e;
-  transition: background-color 0.7s ease;
+    height: 75px;
+    width: 75px;
+    border-radius: 1px;
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+    background-color: #0d0d0e;
+    transition: background-color 0.7s ease;
 }
 
 .Cell-White {
-  height: 100px;
-  width: 100px;
-  border-radius: 1px;
-  background-color: #263238;
-  transition: background-color 0.7s ease;
+    height: 75px;
+    width: 75px;
+    border-radius: 1px;
+    background-color: #263238;
+    transition: background-color 0.7s ease;
 }
 
 .Cell-Lit {
-  height: 100px;
-  width: 100px;
-  background-color: #eed705;
+    height: 75px;
+    width: 75px;
+    background-color: #eed705;
 }
 
 .Cell-Light {
-  height: 100px;
-  width: 100px;
-  background-color: #ee9105;
+    height: 75px;
+    width: 75px;
+    background-color: #ee9105;
 }
 
 .Cell-Light-Error {
-  height: 100px;
-  width: 100px;
-  background-color: #ee0505;
+    height: 75px;
+    width: 75px;
+    background-color: #ee0505;
 }
 
 /* Glow effect for lightbulb */
 .cell-Light div {
-  position: absolute;
-  top: calc(50% - 20px);
-  left: calc(50% - 20px);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #fff;
-  box-shadow:
-    0 0 5px 5px #fff,
-    0 0 10px 10px yellow,
-    0 0 15px 15px crimson;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 5px 5px #fff, 0 0 10px 10px yellow, 0 0 15px 15px crimson;
 }
